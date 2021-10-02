@@ -1,15 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"math/rand"
+	"time"
+)
 
 func main() {
-	for i := 1; i <= 100; i = i + 1 {
-		if i%2 == 0 {
-			fmt.Println(i)
-			fmt.Println("偶数")
-		} else {
-			fmt.Println(i)
-			fmt.Println("奇数")
-		}
-	}
+	t := time.Now().UnixNano()
+	rand.Seed(t)
+	random := rand.Intn(6)
+	println(random)
 }
