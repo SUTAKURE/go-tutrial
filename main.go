@@ -3,17 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("price")
-
-	num := 1
-	switch num {
-	case 1:
-		fmt.Printf("I \n")
-		fallthrough
-	case 2:
-		fmt.Printf("am \n")
-		fallthrough
-	case 3:
-		fmt.Printf("yyh-gl \n")
+	for i := 1; i <= 100; i = i + 1 {
+		if i%2 == 0 {
+			fmt.Println(i)
+			fmt.Println("偶数")
+		} else {
+			fmt.Println(i)
+			fmt.Println("奇数")
+		}
 	}
 }
