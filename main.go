@@ -1,11 +1,8 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/tenntenn/greeting"
-)
+import "go-tutrial/foobar"
 
 func main() {
-	fmt.Println(greeting.Do())
+	foobar.Foo()
+	foobar.Bar()
 }
