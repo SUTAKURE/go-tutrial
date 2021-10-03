@@ -1,16 +1,11 @@
 package main
 
 func main() {
-	for i := 1; i <= 100; i++ {
-		hantei(i)
-	}
+	n, m := swap(10, 20)
+	println(n, m)
 }
 
-func hantei(x int) {
-	print(x)
-	if x%2 == 0 {
-		println("-偶数")
-	} else {
-		println("-奇数")
-	}
+func swap(x, y int) (x2, y2 int) {
+	x2, y2 = y, x
+	return
 }
