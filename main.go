@@ -1,11 +1,11 @@
 package main
 
-type MyInt int
+import (
+	"fmt"
 
-func (n *MyInt) Inc() { *n++ }
+	"github.com/tenntenn/greeting"
+)
+
 func main() {
-	var n MyInt
-	println(n)
-	n.Inc()
-	println(n)
+	fmt.Println(greeting.Do())
 }
