@@ -1,11 +1,12 @@
 package main
 
 func main() {
-	n, m := swap(10, 20)
+	n, m := 10, 20
+	swap2(&n, &m)
 	println(n, m)
+
 }
 
-func swap(x, y int) (x2, y2 int) {
-	x2, y2 = y, x
-	return
+func swap2(n, m *int) {
+	*n, *m = *m, *n
 }
