@@ -1,10 +1,12 @@
 package main
 
+type Game struct {
+	Name     string
+	Point    int
+	PointSum int
+}
+
 func main() {
-	var sum int
-	sum = 5 + 6 + 3
-	avg := sum / 3
-	if avg > 4 {
-		println("good")
-	}
+
+	// deal
 }
