@@ -1,21 +1,45 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
-	"strings"
+	"os"
+	"path/filepath"
 )
 
-// 設定される変数のポインタを取得
-var msg = flag.String("msg", "デフォルト値", "説明")
-var n int
-
-func init() {
-	// ポインタを指定して設定を予約
-	flag.IntVar(&n, "n", 1, "回数")
-}
 func main() {
-	// ここで実際に設定される
+	var n = flag.Bool("n", false, "通し番号を付与する")
 	flag.Parse()
-	fmt.Println(strings.Repeat(*msg, n))
+
+	var (
+		files     = flag.Args()
+		path, err = os.Executable()
+	)
+
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "読み込みに失敗しました", err)
+	}
+
+	//実行ファイルのディレクトリ名を取得
+	path = filepath.Dir(path)
+	//通し番号の用意
+	i := 1
+
+	for x := 0; x < len(files); x++ {
+		sf, err := os.Open(filepath.Join(path, files[x]))
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "読み込みに失敗しました", err)
+		} else {
+			scanner := bufio.NewScanner(sf)
+			for ; scanner.Scan(); i++ {
+				if *n {
+					//オプションがある場合
+					fmt.Printf("%v: ", i)
+				}
+				fmt.Println(scanner.Text())
+			}
+		}
+	}
+
 }
